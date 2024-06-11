@@ -1,0 +1,41 @@
+{% extends './main.html' %}
+{% load static %}
+{% block main %}
+
+<link rel="stylesheet" href="{% static 'cssfiles/window.css' %}">
+
+<i class="fa-regular fa-arrow-left backk less" onclick="goBack()"></i>
+<div class = "first_div_win them">
+  <label class = "title_direct" style="font-weight: 500;">
+    Студенты по курсу: {{courses_name}}
+  </label>
+</div>
+
+<div class = "imag_block">
+<div class = "table_block">
+    <div class = "headname">
+        <p class = "head_item counterr">№</p>
+        <p class = "head_item">ФИО</p>
+        <p class = "head_item">Email</p>
+        <p class = "head_item">Номер телефона</p>
+        <p class = "head_item">Статус</p>
+    </div>
+   
+    {% for i in students %}
+    <div class = "headname_block">
+        <input class = "inputItem_block counterr" readonly value = "{{forloop.counter}}"/>
+        <input class = "inputItem_block" readonly value = "{{i.first_name }} {{i.last_name }}"/>
+        <input class = "inputItem_block" readonly value="{{i.email}}"/>
+        <input class = "inputItem_block" readonly value="{{i.number}}"/>
+        <input class = "inputItem_block" readonly value="{{i.status}}"/>
+        <div class = "buttonthemee"><button class = "themebutton" onclick="window.location.href='/themesmentor/{{i.id}}'">Перейти</button></div>
+    </div>
+    {%endfor%}
+</div>
+</div>
+<script>
+    function goBack() {
+        window.history.back(); // Возвращаемся на предыдущую страницу
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'cssfiles/style.css' %}">
+  </head>
+  <body>
+    <div class="element">
+      <div class="div">
+        <div class="text-wrapper">SKILLWAVE</div>
+        <div class="overlap-group">
+          <div class="frame">
+            <div class="text-wrapper-2">SILLKWAVE</div>
+            <div class="text-wrapper-3">We are</div>
+            <div class="text-wrapper-4">Invite only right now.</div>
+            <p class="p">10 million+ people have joined our network we invite you to join our tribe</p>
+            <div class="text-wrapper-5">Already have an account?</div>
+            <button class="text-wrapper-6 toggleButton" onclick="window.location.href='/'">Sign In</button>
+          </div>
+        </div>
+        {% if error != "OK" %}
+        <form class="frame-2" method="post" id="set_three" >
+          {% csrf_token %}
+          <div class="frame-3">
+            <div class="text-wrapper-7">Давайте проверим</div>
+            <div class="text-wrapper-11">Ссылка на сброс паролья была отправлена к вам на почту</div>
+           
+          </div>
+          <div class="frame-4">
+            
+            <div class="frame-5">
+              <div class="text-wrapper-8">Введите Код</div>
+              <input type="password" class="frame-8 input_password" required name="pin" >
+            </div>
+         
+          </div>
+          <div class="frame-9">
+            <button type="submit" class="button-large-primary" name="check_account">Войти</button>
+            {{error}}
+            <div class="frame-10">
+              <div class="text-wrapper-13">Вспомнили пароль?</div>
+              <button class="text-wrapper-14 toggleButton" onclick="window.location.href='/'">Войти</button>
+            </div>
+          </div>
+        </form>
+        {% else %}
+        <form class="frame-2" method="post" id="set_three" >
+          {% csrf_token %}
+          <div class="frame-3">
+            <div class="text-wrapper-7">Добро пожаловать, {{user.first_name}}</div>
+            <div class="text-wrapper-11">Придумайте новый пароль</div>
+           
+          </div>
+          <div class="frame-7">
+            <div class="input-field-text-2">
+              <div class="text-wrapper-8">Пароль</div>
+              <input type="password"  class="frame-8 input_password" id="password1" required name="password" placeholder="Не менее 4 символов">
+            </div>
+              <div class="input-field-text-2">
+              <div class="text-wrapper-8">Повторите пароль</div>
+              <input type="password"   id="password2" class="frame-8 input_password" required name="password" placeholder="Повторите пароль">
+              <div class="text-wrapper-15 set_text_button"  onclick="togglePasswordVisibility1()">Показать пароль</div>
+              
+            </div>
+           
+          </div>
+          <div class="frame-9">
+            <button type="submit" class="button-large-primary" name="check_account">Войти</button>
+            {{error}}
+            <div class="frame-10">
+              <div class="text-wrapper-13">Вспомнили пароль?</div>
+              <button class="text-wrapper-14 toggleButton" onclick="window.location.href='/'">Войти</button>
+            </div>
+          </div>
+        </form>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="{% static 'scripts/password.js'%}"></script>

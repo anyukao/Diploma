@@ -1,0 +1,64 @@
+{% extends './main.html' %}
+{% load static %}
+{% block main %}
+<div class = "fioperson">
+    {% if user.user_info.image == "" %}
+    <img class = "userphoto cent" src = "/media/media/user/userimage.png" style="margin: 0; width: 60px; height: 60px;">
+    {% else %}
+    <img class = "userphoto cent" src = "{{user.user_info.image.url}}" style="margin: 0; width: 60px; height: 60px;"  >
+    {%endif%}
+    {% comment %} <img class = "userphoto cent" src = "{{user.user_info.image.url}}" style="margin: 0; width: 60px; height: 60px;" > {% endcomment %}
+    <p class = "txtperson">{{user.first_name}} {{user.last_name}} ({{user.user_info.status}})</p> 
+</div>
+<form method="post">
+<div class = "inptConttee22">
+   
+    
+    <div class = "inptConttee222">
+        <label class = "label_input22">Имя</label>
+        <input type="txt" class = "inp22" name="first_name" value = "{{user.first_name}}">
+    </div>
+    <div class = "inptConttee222">
+        <label class = "label_input22">Email</label>
+        <input type="txt" class = "inp22" name="email" value = "{{user.email}}">
+    </div>
+    <div class = "inptConttee222">
+        <label class = "label_input22">Страна</label>
+        <input type="txt" class = "inp22" name="country" value = "{{user.user_info.country}}">
+    </div>
+
+    <div class = "inptConttee222">
+        <label class = "label_input22">Фамилия</label>
+        <input type="txt" class = "inp22" name="last_name" value = "{{user.last_name}}">
+    </div>
+    <div class = "inptConttee222">
+        <label class = "label_input22">Номер телефона</label>
+        <input type="txt" class = "inp22" name="number" value = "{{user.user_info.number}}">
+    </div>
+    <div class = "inptConttee222">
+        <label class = "label_input22">Город</label>
+        <input type="txt" class = "inp22" name="city" value = "{{user.user_info.city}}">
+    </div>
+    <div class = "inptConttee222">
+        <label class = "label_input22">Дата рождения</label>
+        <div class = "fl">
+        <input type="txt" class = "inp22" id = "textield" readonly  value = "{{user.user_info.date_of_birth}}">
+        <input type="date" name="date_of_birth" onchange="updateTextField()" id = "dateield" class = "inpdatasperson1" >
+        </div>
+    </div>
+   
+</div>
+<div class = "buttonsperson">
+    {% csrf_token %}
+    <input class="button-savedatas" type="submit" name="updates" value="Сохранить" />
+    <input class="button-savedatas closse" readonly onclick="goBack()" value="Закрыть" />
+</div>
+</form>
+<script src="{% static 'scripts/dateBirth.js'%}"></script>
+
+<script>
+    function goBack() {
+      window.history.back(); // Возвращаемся на предыдущую страницу
+    }
+  </script>
+{% endblock %}

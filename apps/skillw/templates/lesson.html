@@ -1,0 +1,129 @@
+{% extends './main.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'cssfiles/window.css' %}">
+{% comment %} <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> {% endcomment %}
+
+<i class="fa-regular fa-arrow-left backk less" onclick="goBack()"></i>
+<div id="general" >
+        <div class="first_div_win them">
+            <label class="title_direct" style="font-weight: 500;">
+                Тема: {{ themes_title }} 
+            </label>
+        </div>
+        <p class="themes_descript">{{ themes_description }}</p>
+        <p class="material_dla_skach">Материал для скачивания</p>
+        <div class="files"> 
+            {% for i in files_data %}
+            <div class="file">
+                <div class="file-icon1">
+                    <img src="" alt="File Icon" class="file-icon" data-file-name="{{ i.file_name }}">
+                </div>
+                <input class="inputItem_less" readonly value="{{ i.file_name }}"/>
+                <div class="downloading">
+                    <a href="{% url 'download_document' i.id %}"><i class="fa-light fa-down-to-bracket ashka"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    <div class="container">
+        <form id="chat-form">
+                <p  class="h4 pt-5 titleh4">Chatroom </p>
+                <textarea readonly class="form-control textareaa" id="chat-text"  rows="25"></textarea>
+            <div class="form-group">
+                <input class="form-control inputform" type="text" id="input">
+                <input class="btn btn-secondary btn-lg btn-block" type="submit" id="submit" value="Send">
+            </div>
+           
+        </form>
+    </div>
+</div>
+<script>
+    document.getElementById('add-file-btn').addEventListener('click', function() {
+        document.getElementById('upload-file-modal').style.display = 'block';
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const themeId = {{ theme.id }};
+        if (!themeId) {
+            console.error('Theme ID is not defined.');
+            return;
+        }
+    
+        const chatSocket = new WebSocket(
+            (window.location.protocol === 'https:' ? 'wss://' : 'ws://') + window.location.host + '/ws/lesson/' + themeId + '/'
+        );
+    
+        chatSocket.onopen = function(e) {
+            console.log('WebSocket connection opened.');
+        };
+    
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const chatText = document.querySelector('#chat-text');
+    
+            if (data.date && data.messages) {
+                const date = data.date;
+                const messages = data.messages;
+                chatText.value += `Дата: ${date}\n`;
+                messages.forEach(msg => {
+                    const { message, sender, time } = msg;
+                    chatText.value += `${time} - ${sender}: ${message}\n`;
+                });
+            } else if (data.message && data.sender && data.time) {
+                const { message, sender, time } = data;
+                chatText.value += `${time} - ${sender}: ${message}\n`;
+            }
+            chatText.scrollTop = chatText.scrollHeight;
+        };
+    
+        chatSocket.onclose = function(e) {
+            console.log('WebSocket connection closed.');
+        };
+    
+        chatSocket.onerror = function(e) {
+            console.error('WebSocket error:', e);
+        };
+    
+        const buttonsubmit = document.getElementById('submit');
+        buttonsubmit.addEventListener('click', function(e) {
+            e.preventDefault();
+            sendMessage();
+        });
+    
+        const inputField = document.getElementById('input');
+        inputField.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    
+        function sendMessage() {
+            const messageInputDom = document.querySelector('#input');
+            const message = messageInputDom.value.trim();
+            if (message && chatSocket.readyState === WebSocket.OPEN) {
+                chatSocket.send(JSON.stringify({
+                    'message': message,
+                }));
+                messageInputDom.value = '';
+            } else {
+                console.error('WebSocket connection is not open or message is empty');
+            }
+        }
+    });
+    
+    
+    
+    
+</script>
+
+    <script src="{% static 'scripts/files_icon.js' %}"></script>
+    <script>
+        function goBack() {
+            window.history.back(); // Возвращаемся на предыдущую страницу
+        }
+    </script>
+{% endblock %}

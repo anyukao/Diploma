@@ -1,0 +1,92 @@
+
+{% extends './main.html' %}
+{% load static %}
+{% block main %}
+
+<link rel="stylesheet" href="{% static 'cssfiles/window.css' %}">
+<div class = "first_div_window">
+  <label class = "title_direct" style="font-weight: 500;">
+    Курсы
+  </label>
+</div>
+<div class = "flexing">
+    <div class = "switchingbutton">
+        <button class="directbutton" onclick="window.location.href='/courses/'">Мои курсы</button>
+        <button class="directbutton" onclick="window.location.href='/allcourses/'">Все</button>
+      </div>
+<!-- Структура поискового блока -->
+<div class="search-container">
+    <!-- Поле поиска -->
+    <input type="text" id="search-input" placeholder="Поиск..." class="search-input" />
+
+    <!-- Кнопка с иконкой поиска -->
+    <button class="search-button">
+        <i class="fa-regular fa-magnifying-glass" style="color: aliceblue;"></i>
+    </button>
+
+    <!-- Фильтр с выпадающим списком -->
+    <select class="search-filter">
+      <option value="all">Все</option>
+      <option value="in-progress">В процессе</option>
+      <option value="completed">Пройденные</option>
+    </select>
+  </div>
+    <div class = "switchingbutton">
+    <button class="directbutton1" onclick="window.location.href='//'">Преподаю</button>
+    <i class="fa-solid fa-lock" style="display: none;"></i>
+    </div>
+  
+  </div>
+
+
+<div class = "boxes" id="results" >
+ 
+    {% for i in courses %}
+    {% if i.status == "В процессе" %}
+    <div class = "boxofdirection item"  data-status="in-progress">
+      {% else %}
+      <div class = "boxofdirection item"   data-status="completed">
+      {% endif %}
+        <div>
+            <img src="{{ i.courses.photo.url }}" class = "imgdirection" alt="">
+            <div class = "div_status">
+              <div class = "divstatus"> 
+                {% if i.status == "В процессе"%}
+                <i class="fa-solid fa-circle grreenn"></i>
+                <a class = "label_status " >{{i.status}}</a>
+                {% else %}
+                <i class="fa-solid fa-circle redd"></i>
+                <a class = "label_statusred" >{{i.status}}</a>
+                {% endif %}
+              </div>
+            </div>
+        </div>
+        <div class = "titleboxes"  >
+            <label><div >{{i.courses.name}} ({{i.courses.napravlenii.name}})</div> </label>
+           
+        </div>
+        <br>
+        <div class = "propertiesofbox" style="gap:10px; font-size: 13px; padding: 0 10px">
+            <div style="display: flex;"><i class="fa-light fa-book-bookmark"></i>
+                <a >Урок:</a><a>{{i.courses.reiting}}</a></div>
+            <div style="display: flex;"><i class="fa-light fa-book-bookmark"></i>
+                <a>Стоимость:</a><a>{{i.courses.price}}</a></div>
+            <div style="display: flex;"><i class="fa-light fa-book-bookmark"></i>
+                <a>{{i.courses.level}}</a></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 0 10px; margin:auto 0; margin-top:20px;">
+            <div style="margin:auto 0; color: transparent;">.</a></div>
+            <div onclick="window.location.href='/tableofmentor/{{i.id}}'"><button class="directbutton" >Перейти </button></div>
+        </div>
+    </div>
+    {% empty %}
+    <label class = "title_direct" style="font-size: 18px; width: 400px;">
+      У вас пока нет курсов!
+    </label>
+    {% endfor %}
+    <script src="{% static 'scripts/searching.js'%}"></script>
+    <script src="{% static 'scripts/filter.js'%}"></script>
+      
+</div>
+  
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends './main.html' %}
+{% load static %}
+{% block main %}
+
+<link rel="stylesheet" href="{% static 'cssfiles/window.css' %}">
+
+<i class="fa-regular fa-arrow-left backk less" onclick="goBack()"></i>
+<div class = "first_div_win them">
+  <label class = "title_direct" style="font-weight: 500;">
+    Темы по курсу: {{courses_name}}
+  </label>
+</div>
+<a class = "title_theme"> Зарегистрирован с {{data_start}}  </a>
+
+<div class = "imag_block">
+<div class = "table_block">
+    <div class = "headname">
+        <p class = "head_item counterr">№</p>
+        <p class = "head_item">Тема </p>
+        <p class = "head_item">Статус</p>
+        <p class = "head_item">Сообщений</p>
+        <p class = "head_item">Баллы</p>
+    </div>
+ 
+    {% for i in progress_by_theme %}
+    <div class = "headname_block">
+        <input class = "inputItem_block counterr" readonly value = "{{forloop.counter}}"/>
+        <input class = "inputItem_block" readonly value = "{{i.theme.title }}"/>
+        <input class = "inputItem_block" readonly value="{{i.status}}"/>
+        <input class = "inputItem_block" readonly value="2"/>
+        <input class = "inputItem_block" readonly value="{{ i.ocenka }}"/>
+        <div class = "buttonthemee"><button class = "themebutton" onclick="window.location.href='/lesson/{{i.id}}'">Перейти</button></div>
+    </div>
+    {%endfor%}
+</div>
+</div>
+<script>
+  function goBack() {
+      window.history.back(); // Возвращаемся на предыдущую страницу
+  }
+</script>
+{% endblock %}

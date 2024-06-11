@@ -1,0 +1,113 @@
+
+{% extends './main.html' %}
+{% load static %}
+{% block main %}
+<link rel="stylesheet" href="{% static 'cssfiles/window.css' %}">
+<div class = "first_div_window">
+  <label class = "title_direct" style="font-weight: 500;">
+    Курсы
+  </label>
+</div>
+<div class = "flexing">
+    <div class = "switchingbutton">
+        <button class="directbutton" onclick="window.location.href='/courses/'">Мои курсы</button>
+        <button class="directbutton1" onclick="window.location.href='/allcourses/'">Все</button>
+      </div>
+      <!-- Структура поискового блока -->
+<div class="search-container">
+    <!-- Поле поиска -->
+    <input type="text" placeholder="Поиск..." id="search-input" class="search-input" />
+
+    <!-- Кнопка с иконкой поиска -->
+    <button class="search-button">
+        <i class="fa-regular fa-magnifying-glass" style="color: aliceblue;"></i>
+    </button>
+
+  </div>
+
+  {% if mentor == None%}
+  <div class = "directbutton1 ment" onclick="window.location.href='//'">
+    <lebel >Преподаю</label>
+        <i class="fa-solid fa-lock"></i>
+    </div>
+
+{%else%}
+<div class = "switchingbutton">
+<button class="directbutton" onclick="window.location.href='/coursesofmentor/'">Преподаю</button>
+<i class="fa-solid fa-lock" style="display: none;"></i>
+</div>
+{%endif%}
+</div>
+  
+<div class = "boxes" id="results">
+    {% for i in direction %}
+    <div class="boxofdirection item" data-id="{{ i.id }}">
+        <div>
+            <img src="{{ i.photo.url }}" class = "imgdirection" alt="">
+        </div>
+        <div class = "titleboxes">
+            <div>{{i.name}} ({{i.napravlenii.name}})</div>
+        </div>
+        <br>
+        <div class = "propertiesofbox" style="gap:10px; font-size: 13px; padding: 0 10px">
+            <div style="display: flex;"><i class="fa-light fa-book-bookmark"></i>
+                <a >Урок:</a><a>{{i.reiting}}</a></div>
+            <div style="display: flex;"><i class="fa-light fa-book-bookmark"></i>
+                <a>Стоимость:</a><a>{{i.price}}</a></div>
+            <div style="display: flex;"><i class="fa-light fa-book-bookmark"></i>
+                <a>{{i.level}}</a></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 0 10px; margin:auto 0; margin-top:20px;">
+            <div style="margin:auto 0;"><a href="{{i.info_url}}">Ознакомиться</a></div>
+            
+            <div>
+                <button class="directbutton" onclick="openModal('{{ i.id }}')">Оставить заявку</button>
+            </div>
+        </div>
+       
+    </div>
+    {% endfor %}
+</div>
+<div class="alert alert-{{ message.tags }}">
+    {{ message }}
+</div>
+
+<div id="myModal2" class="modal2">
+    <div class="modal-content2">
+        <span class="close2">&times;</span>
+        <form method="post">
+        <div class = "conttee"> 
+            
+            {% csrf_token %}
+            
+            <div style = "text-align: center;">
+            <label class = "zapis_label">Записаться или получить </br> бесплатную консультацию</label>
+            </div>
+            <input style="display: none;" readonly name = "displayCourseId" id="displayCourseId" value=""/>
+            <div class = "inptConttee">
+                <div  class = "inptConttee2">
+                    <label class = "label_input">Имя</label>
+                    <input class = "inp" name="first_name" value="{{user.first_name}}" placeholder="Имя" />
+                </div>
+                <div class = "inptConttee2">
+                    <label class = "label_input">Электронная почта</label>
+                    <input class = "inp"  name="email" value = "{{user.email}}" placeholder="Электронная почта" />
+                </div>
+                <div class = "inptConttee2">
+                    <label class = "label_input"   >Телефон</label>
+                    <input class = "inp" name="number" value = "{{user.user_info.number}}" placeholder="Телефон" />
+                </div>
+                <div style="text-align: center; margin-top: 5%"><button class="directbutton" id = ""> Записаться на курс </button></div>
+            </div>
+          
+        </div>
+    </form>
+
+    </div>
+</div>
+
+
+
+<script src="{% static 'scripts/searching.js'%}"></script>
+<script src="{% static 'scripts/submitapp.js'%}"></script>
+{% endblock %}

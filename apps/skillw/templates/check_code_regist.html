@@ -1,0 +1,53 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'cssfiles/style.css' %}">
+  </head>
+  <body>
+    <div class="element">
+      <div class="div">
+        <div class="text-wrapper">SKILLWAVE</div>
+        <div class="overlap-group">
+          <div class="frame">
+            <div class="text-wrapper-2">SILLKWAVE</div>
+            <div class="text-wrapper-3">We are</div>
+            <div class="text-wrapper-4">Invite only right now.</div>
+            <p class="p">10 million+ people have joined our network we invite you to join our tribe</p>
+            <div class="text-wrapper-5">Already have an account?</div>
+            <button class="text-wrapper-6 toggleButton" onclick="window.location.href='/'">Sign In</button>
+          </div>
+        </div>
+       
+        <form class="frame-2" method="post" id="set_three" >
+          {% csrf_token %}
+          <div class="frame-3">
+            <div class="text-wrapper-7">Давайте проверим</div>
+            <div class="text-wrapper-11">На указанную вами почту был отправлен Код подтверждения</div>
+           
+          </div>
+          <div class="frame-4">
+            
+            <div class="frame-5">
+              <div class="text-wrapper-8">Введите Код</div>
+              <input type="password" class="frame-8 input_password" required name="pin" >
+            </div>
+         
+          </div>
+          <div class="frame-9">
+            <button type="submit" class="button-large-primary" name="check_account">Зарегистрироваться</button>
+            <p class = "error">{{error}}</p>
+            <div class="frame-10">
+              <div class="text-wrapper-13">Вспомнили пароль?</div>
+              <button class="text-wrapper-14 toggleButton" onclick="window.location.href='/'">Войти</button>
+            </div>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </body>
+</html>
+
+

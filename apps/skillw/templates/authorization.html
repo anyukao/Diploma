@@ -1,0 +1,131 @@
+{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="{% static 'cssfiles/style.css' %}">
+  </head>
+  <body>
+    <div class="element">
+      <div class="div">
+        <div class="text-wrapper">SKILLWAVE</div>
+        <div class="overlap-group">
+          <div class="frame">
+            <div class="text-wrapper-2">SILLKWAVE</div>
+            <div class="text-wrapper-3">We are</div>
+            <div class="text-wrapper-4">Invite only right now.</div>
+            <p class="p">10 million+ people have joined our network we invite you to join our tribe</p>
+            <div class="text-wrapper-5">Already have an account?</div>
+            <button class="text-wrapper-6 toggleButton" data-form="set_two">Sign In</button>
+          </div>
+        </div>
+        <form class="frame-2" method="post" id="set_one">
+          {% csrf_token %}
+          <div class="frame-3">
+            <div class="text-wrapper-7">Вход</div>
+            <div class="text-wrapper-11">Введите свои данные для входа в систему</div>
+           
+          </div>
+          <div class="frame-4">
+            <div class="frame-5">
+              <div class="text-wrapper-8">Email</div>
+              <input type="email" class="frame-8 input_password" required name="email" placeholder="ex@email.com" >
+            </div>
+            <div class="frame-7">
+              <div class="input-field-text-2">
+                <div class="text-wrapper-8">Пароль</div>
+                <input type="password"  id="password-input" class="frame-8 input_password" required name="password" placeholder="Введите пароль">
+                <button class="text-wrapper-8 set_text_button" onclick="togglePasswordVisibility()">Показать пароль</button>
+                
+              </div>
+              <button class="text-wrapper-11 toggleButton" data-form="set_three">Забыли пароль?</button>
+            </div>
+          </div>
+          <div class="frame-9">
+            <button type="submit" class="button-large-primary" name="login_account">Войти</button>
+            <p class = "error">{{error}}</p>
+            <div class="frame-10">
+              <div class="text-wrapper-13">У вас нет аккаунта?</div>
+              <button class="text-wrapper-14 toggleButton" data-form="set_two">Зарегистрироваться</button>
+            </div>
+          </div>
+        </form>
+
+        <form class="frame-2" method="post" id="set_two" style="display: none; top: 180px;">
+          {% csrf_token %}
+          <div class="frame-3" >
+            <div class="text-wrapper-7" >Регистрация</div>
+            <div class="text-wrapper-11">Введите свои данные для регистрации</div>
+          </div>
+
+          <div class="frame-4">
+            <div class="frame-5">
+              <div class="text-wrapper-8">Имя</div>
+              <input type="text" class="frame-8 input_password" required name="name" placeholder="Аню" >
+            </div>
+            <div class="frame-5">
+              <div class="text-wrapper-8">Email</div>
+              <input type="email" class="frame-8 input_password" required name="email" placeholder="ex@email.com" >
+            </div>
+            <div class="frame-7">
+              <div class="input-field-text-2">
+                <div class="text-wrapper-8">Пароль</div>
+                <input type="password"  class="frame-8 input_password" id="password1" required name="password" placeholder="Не менее 4 символов">
+              </div>
+                <div class="input-field-text-2">
+                <div class="text-wrapper-8">Повторите пароль</div>
+                <input type="password"   id="password2" class="frame-8 input_password" required name="password" placeholder="Повторите пароль">
+                <div class="text-wrapper-15 set_text_button"  onclick="togglePasswordVisibility1()">Показать пароль</div>
+                
+              </div>
+             
+            </div>
+          </div>
+          <div class="frame-9">
+            <button  class="button-large-primary" name="regist_account" id="submitBtnPass" onclick="checkPasswords(event)">Далее</button>
+           
+            <div id="loader_pass" class="loader_pass" style="display: none;">
+              <img src="{% static 'images/loader.gif' %}"  class="loader_gif" alt="loader">
+            </div>
+            <div class="frame-10">
+              <div class="text-wrapper-13">У вас уже есть аккаунт?</div>
+              <button class="text-wrapper-14 toggleButton" data-form="set_one">Войти</button>
+            </div>
+          </div>
+        </form>
+
+        <form class="frame-2" method="post" id="set_three" style="display: none;">
+          {% csrf_token %}
+          <div class="frame-3">
+            <div class="text-wrapper-7">Забыли пароль?</div>
+            <div class="text-wrapper-11">Ссылка на сброс паролья придет к вам на почту</div>
+          </div>
+
+          <div class="frame-4">
+            <div class="frame-5">
+              <div class="text-wrapper-8">Email</div>
+              <input type="email" class="frame-8 input_password" required name="email" placeholder="ex@email.com" >
+            </div>
+          </div>
+
+          <div class="frame-9">
+            <button type="submit" class="button-large-primary " name="check_account" id="submitBtn" onclick="replaceWithLoader()">Отправить код</button>
+            <div id="loader" class="loader" style="display: none;">
+              <img src="{% static 'images/loader.gif' %}"  class="loader_gif" alt="loader">
+            </div>
+
+            <div class="frame-10">
+              <div class="text-wrapper-13">Вспомнили пароль?</div>
+              <button class="text-wrapper-14 toggleButton" data-form="set_one">Войти</button>
+            </div>
+
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </body>
+
+</html>
+<script src="{% static 'scripts/password.js'%}"></script>

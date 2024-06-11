@@ -1,0 +1,212 @@
+<html>
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        #clock {
+            
+            text-align: center;
+           
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'cssfiles/mainstyle.css'%}" media="all">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.min.css'%}">
+    <link href="{% static 'fontawesome/css/brands.css'%}" rel="stylesheet">
+    <link href="{% static 'fontawesome/css/solid.css'%}" rel="stylesheet">
+    <link href="{% static 'fontawesome/css/regular.css'%}" rel="stylesheet">
+    <link href="{% static 'fontawesome/css/light.css'%}" rel="stylesheet">
+    <link href="{% static 'fontawesome/css/thin.css'%}" rel="stylesheet">
+    <link href="{% static 'fontawesome/css/duotone.css'%}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+        <div class="menuleft">
+           
+            <div class="line">
+                <div class="categories">
+
+
+                    {% if url_active == "homepage" %}
+                    <div class="categswich_active">
+                    {% else %}
+                    <div class="categswich" onclick="window.location.href='/homepage/'">
+                    {% endif %}
+                        <i class="fa-light fa-house"></i>
+                        <a>Главная</a>
+                    </div>
+
+{% comment %} 
+                    {% if url_active == "personal" %}
+                    <div class="categswich_active">
+                    {% else %}
+                    <div class="categswich" onclick="window.location.href='/personal/'">
+                    {% endif %}
+                        <i class="fa-light fa-user"></i>
+                        <a>Личная страница</a>
+                    </div> {% endcomment %}
+
+
+                    {% if url_active == "directions" %}
+                    <div class="categswich_active">
+                    {% else %}
+                    <div class="categswich" onclick="window.location.href='/directions/'">
+                    {% endif %}
+                        <i class="fa-light fa-book-atlas"></i>
+                        <a>Направления</a>
+                    </div>
+
+
+                    
+                    {% comment %} {% if url_active == "allcourses" %}
+                    <div class="categswich_active">
+                    {% else %}
+                    <div class="categswich" onclick="window.location.href='/allcourses/'">
+                    {% endif %}
+                    <i class="fa-light fa-book-copy"></i>
+                        <a>Все курсы</a>
+                    </div> {% endcomment %}
+
+
+
+                    {% if url_active == "courses" %}
+                    <div class="categswich_active">
+                    {% else %}
+                    <div class="categswich" onclick="window.location.href='/courses/'">
+                    {% endif %}
+                        <i class="fa-light fa-book-bookmark"></i>
+                        <a>Курсы</a>
+                    </div>
+
+                    {% if url_active == "calendar" %}
+                    <div class="categswich_active">
+                    {% else %}
+                    <div class="categswich" onclick="window.location.href='/calendar/'">
+                    {% endif %}
+                        <i class="fa-light fa-calendar"></i>
+                        <a>Календарь</a>
+                    </div>
+
+
+                    {% if url_active == "notifications" %}
+                    <div class="categswich_active">
+                        {% else %}
+                        <div class="categswich" onclick="window.location.href='/notifications/'">
+                        {% endif %}
+                        <i class="fa-light fa-bell"></i>
+                        <a>Уведомления</a>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="categswichout">
+                <i class="fa-light fa-arrow-right-from-bracket"></i>
+                <a href="/logout/">Выход</a>
+            </div>
+        </div>
+    <div class="prime_block">
+            <section class="header">
+                <div class = "headertext3">
+                <div>
+            <h1 class="skillver">SKILLWAVE</h1>
+                </div>
+            <div class = "headertext">Добро пожаловать <b style="color:rgb(141, 65, 211); font-size: 16px;">{{user.username}}</b>!</div>
+        </div>
+            <div class = "headertext2">
+                <label class = "cent timehead" style="font-size: 20px;"><div id="clock"></div></label>
+                <i class="fa-light fa-bell cent" style=" font-size: 25px;" onclick="window.location.href='/notifications/'"></i>
+                {% if user.user_info.image == "" %}
+                <img class = "userphoto cent" src = "/media/media/user/userimage.png"  id="userImage">
+                {% else %}
+                <img class = "userphoto cent" src = "{{user.user_info.image.url}} " id="userImage" >
+                {%endif%}
+            </div>
+            </section>
+    </div>
+    <section class="prime_body"> 
+        {% block main %}
+        {% endblock %}
+    </section>
+    <script src="{% static 'scripts/updateTime.js'%}"></script>
+
+
+<!-- Модальное окно -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class = "wingrid">
+        <div class = "wintext">
+            <label class = "winusername" name="email" >{{user.username}}</label>
+        </div>
+        {% if user.user_info.image == "" %}
+        <div class = "centere">
+        <img class = "userphoto " src = "/media/media/user/userimage.png" style="margin: 0; width: 60px; height: 60px;">
+        </div>
+        {% else %}
+        <div class = "centere">
+        <img class = "userphoto " src = "{{user.user_info.image.url}}" style="margin: 0; width: 60px; height: 60px;"  >
+        </div>
+        {%endif%}
+        <div class = "txtinp">
+            <label  class = "winpersonname" name="first_name"> {{user.first_name}}</label>
+            <label  class = "winpersonemail" name="email">{{user.email}} </label>
+        </div>
+            <div class = "winbutt" onclick="window.location.href='/personal/'">
+                <i class="fa-light fa-pen-to-square winicon"></i>
+                <label class = "editwinb">Редактировать </label>
+            </div>
+            <div class = "bementorwin" onclick="openModal()">
+                <label >Стать ментором </label>
+            </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div id="myModal2" class="modal2">
+    <div class="modal-content2">
+        <span class="close2">&times;</span>
+        <form method="post">
+        <div class = "conttee"> 
+            
+            {% csrf_token %}
+            
+            <p class = "zapis_label1">Хотите стать ментором?</p>
+            <p class = "zapis_label">Оставьте заявку! </br> Наш администратор свяжется с вами </br>для консультации.</p>
+            <input style="display: none;" readonly name = "displayCourseId" id="displayCourseId" value=""/>
+            <div class = "inptConttee">
+                <div  class = "inptConttee2">
+                    <label class = "label_input">Имя</label>
+                    <input class = "inp" name="first_name" value="{{user.first_name}}" placeholder="Имя" />
+                </div>
+                <div class = "inptConttee2">
+                    <label class = "label_input">Электронная почта</label>
+                    <input class = "inp"  name="email" value = "{{user.email}}" placeholder="Электронная почта" />
+                </div>
+                <div class = "inptConttee2">
+                    <label class = "label_input"   >Телефон</label>
+                    <input class = "inp" name="number" value = "{{user.user_info.number}}" placeholder="Телефон" />
+                </div>
+                <div style="text-align: center; margin-top: 5%"><button class="directbutton" id = ""> Отправить заявку </button></div>
+            </div>
+          
+        </div>
+    </form>
+
+    </div>
+</div>
+<script src="{% static 'scripts/submitappMentor.js'%}"></script>
+<script src="{% static 'scripts/modalwin.js'%}"></script>
+</body>
+
+</html>
+

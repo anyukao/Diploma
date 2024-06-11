@@ -1,0 +1,438 @@
+.body{
+    font-family: "Mulish-Regular", Helvetica;
+ 
+  }
+
+  html {
+    zoom: 80%;
+}
+  .element {
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    
+    }
+    
+    .element .div {
+      background-color: #ffffff;
+      width: 1440px;
+      position: relative;
+      margin-top: 40px;
+    }
+
+   
+    .element .text-wrapper {
+      position: absolute;
+      top: 70px;
+      left: 838px;
+      background: linear-gradient(180deg, rgb(69.04, 119.82, 218.01) 0%, rgb(120.09, 47.69, 164.46) 100%);
+      -webkit-background-clip: text !important;
+      background-clip: text;
+      font-family: "Mulish";
+      font-weight: 900;
+      color: transparent;
+      font-size: 49.2px;
+      letter-spacing: 1.97px;
+    }
+    
+    .element .overlap-group {
+      width: 542px;
+      height: 600px;
+      padding: 100px 80px;
+      border-radius: 20px;
+      background-image: url(../images/image.png);
+      background-repeat:no-repeat;
+      background-position: center center;
+      background-size: cover;
+      margin: auto 0;
+      
+      
+    }
+    
+    .element .frame {
+      width: 400px;
+      height: 500px;
+      margin: auto;
+      padding: 50px 50px;
+      background-color: #04202b26;
+      border-radius: 28px;
+      backdrop-filter: blur(50px) brightness(100%);
+      -webkit-backdrop-filter: blur(50px) brightness(100%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .element .text-wrapper-2 {
+      font-weight: 900;
+      font-family: "Mulish";
+      color: #ffffff;
+      font-size: 28px;
+      letter-spacing: 1.12px;
+      margin-bottom: 20px;
+    }
+    
+    .element .text-wrapper-3 {
+      font-family: "Mulish";
+      font-weight: 500;
+      color: #ffffff;
+      font-size: 18px;
+      letter-spacing: 0.72px;
+    }
+    
+    .element .text-wrapper-4 {
+      font-family: "Mulish";
+      font-weight: 700;
+      color: #fffeff;
+      font-size: 34px;
+      letter-spacing: 1.36px;
+    }
+    
+    .element .p {
+      font-family: "Mulish";
+      font-weight: 500;
+      color: #ffffff;
+      font-size: 20px;
+    }
+    
+    .element .text-wrapper-5 {
+      font-family: "Mulish";
+      font-weight: 500;
+      color: #ffffff;
+      font-size: 20px;
+      margin-top: 45%;
+    }
+    
+    .element .text-wrapper-6 {
+      font-family: "Mulish";
+      font-weight: 500;
+      color: #ffffff;
+      font-size: 20px;
+      text-align: left;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      padding: 0%;
+    }
+    
+    .element .frame-2 {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 40px;
+      position: absolute;
+      top: 240px;
+      left: 838px;
+    }
+    
+    .element .frame-3 {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    .error{
+      color: red;
+      margin: 0;
+    }
+    .element .text-wrapper-7 {
+      font-family: "Mulish";
+      font-weight: 600;
+      color: var(--black);
+      font-size: 34px;
+      text-align: center;
+      position: relative;
+      width: fit-content;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+    
+    
+    .element .image {
+      position: relative;
+      flex: 0 0 auto;
+    }
+    
+    .element .frame-4 {
+      display: flex;
+      flex-direction: column;
+      width: 522px;
+      align-items: flex-start;
+      gap: 20px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    
+    .element .frame-5 {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    
+    .element .text-wrapper-8 {
+      position: relative;
+      width: fit-content;
+      background: transparent ;
+      border: 0;
+      padding: 0;
+      margin-top: -1px;
+      font-family: "Mulish-SemiBold", Helvetica;
+      font-weight: 600;
+      color: var(--variable-collection-gray-60);
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+    
+    .element .input-field-text {
+      display: flex;
+      width: 524px;
+      align-items: flex-end;
+      gap: 10px;
+      padding: 12px;
+      position: relative;
+      flex: 0 0 auto;
+      margin-bottom: -1px;
+      margin-left: -1px;
+      margin-right: -1px;
+      border-radius: 6px;
+      border: 1px solid;
+      border-color: transparent;
+      border-image: linear-gradient(180deg, rgb(69.04, 119.82, 218.01), rgb(120.09, 47.69, 164.46)) 1;
+    }
+    
+    .element .frame-6 {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    
+    .element .text-wrapper-9 {
+      position: relative;
+      width: 421px;
+      margin-top: -1px;
+      font-family: "Mulish-Regular", Helvetica;
+      font-weight: 400;
+      color: var(--black);
+      font-size: 20px;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+    
+    .element .frame-7 {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 12px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    
+    .element .input-field-text-2 {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 4px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    
+    .element .input-field-text-3 {
+      display: inline-flex;
+      height: 50px;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px;
+      position: relative;
+      margin-bottom: -1px;
+      margin-left: -1px;
+      margin-right: -1px;
+      border-radius: 6px;
+      border: 1px solid;
+      border-color: var(--variable-collection-gray-60);
+    }
+    
+    .element .frame-8 {
+      display: flex;
+      width: 498px;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    
+    .element .text-wrapper-10 {
+      margin-top: -1px;
+      font-family: "Mulish-Regular", Helvetica;
+      font-weight: 400;
+      color: var(--variable-collection-gray-60);
+      font-size: 20px;
+      position: relative;
+      width: fit-content;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+    
+    .element .component {
+      position: relative;
+      width: 24px;
+      height: 24px;
+    }
+    
+    .element .text-wrapper-11 {
+      opacity: 0.5;
+      font-family: "Mulish-Regular", Helvetica;
+      font-weight: 400;
+      color: var(--black);
+      cursor: pointer;
+      font-size: 16px;
+      text-align: right;
+      border: 0;
+      background-color: transparent;
+      position: relative;
+      width: fit-content;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+    
+    .element .frame-9 {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 29px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    
+    .element .button-large-primary {
+      display: flex;
+      width: 498px;
+      border: 0;
+      font-size: 18px;
+      color: #ffffff;
+      font-weight: 300;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 14px 180px;
+      position: relative;
+      flex: 0 0 auto;
+      border-radius: 6px;
+      background: linear-gradient(180deg, rgb(69.04, 119.82, 218.01) 0%, rgb(120.09, 47.69, 164.46) 100%);
+    }
+  
+    
+    .element .text-wrapper-12 {
+      margin-top: -0.5px;
+      font-family: "Mulish-Medium", Helvetica;
+      font-weight: 500;
+      color: var(--variable-collection-white);
+      font-size: 20px;
+      text-align: center;
+      position: relative;
+      width: fit-content;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+    
+    .element .frame-10 {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 8px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+    
+    .element .text-wrapper-13 {
+      margin-top: -1px;
+      font-family: "Mulish-Regular", Helvetica;
+      font-weight: 400;
+      color: var(--variable-collection-gray-60);
+      font-size: 20px;
+      border: 0;
+      background-color: transparent;
+      text-align: center;
+      position: relative;
+      width: fit-content;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+    
+    .element .text-wrapper-14 {
+      margin-top: -1px;
+      font-family: "Mulish", Helvetica;
+      font-weight: 500;
+      color: var(--blue);
+      font-size: 20px;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      width: fit-content;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+    
+  
+    .input_password{
+      padding: 10px;
+      font-size: 20px;
+      border: 1px solid rgb(69, 120, 218); 
+     border-radius: 6px;
+  
+    }
+  
+  
+  
+    .element .text-wrapper-15{
+      position: relative;
+      width: fit-content;
+      background: transparent ;
+      border: 0;
+      padding: 0;
+      margin-top: -1px;
+      cursor: pointer;
+      font-family: "Mulish-SemiBold", Helvetica;
+      font-weight: 600;
+      color: var(--variable-collection-gray-60);
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+  .loader, .loader_pass{
+      width: 498px;
+      text-align: center;
+  }
+    .loader_gif{
+      width: 68px;
+    }
+
+   
+
+  @media (width<1960px) {
+    html {
+      zoom: 100%;
+  }
+}
+@media (width<1686px) {
+  html {
+    zoom: 80%;
+}
+}
+@media (width<1400px) {
+  html {
+    zoom: 70%;
+}
+}
+ 

@@ -1,0 +1,23 @@
+{% extends './main.html' %}
+{% load static %}
+{% block main %}
+<!-- notifications.html -->
+
+<!DOCTYPE html>
+
+    <div id="notification"></div>
+
+    <script>
+        const notificationSocket = new WebSocket(
+            'ws://' + window.location.host + '/ws/notifications/'
+        );
+
+        notificationSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            const notificationDiv = document.getElementById('notification');
+            notificationDiv.innerHTML = data.message;
+        };
+    </script>
+
+
+{% endblock %}

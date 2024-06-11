@@ -1,0 +1,436 @@
+body {
+    margin: 0;
+    background-color: var(--fon, #F7F8FC);
+    font-family: "Mulish-Regular", Helvetica;
+    display: flex;
+}
+
+/* Стиль для модального окна (скрыто по умолчанию) */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: transparent;
+  }
+  .closse{
+    text-align: center;
+    outline-offset: none;
+    outline: none;
+  }
+  .centere{
+    margin: auto;
+    justify-content: center;
+  }
+  /* Содержимое модального окна */
+  .modal-content {
+    background-color: var(--fon, #ffffff);
+  
+    border: 1px solid #f5f5f5;
+    box-shadow: 0px 3px 12px 0px rgba(156, 156, 156, 0.361);
+    width: 280px;
+    height: 330px;
+    position: fixed;
+    right: 2.5%; /* Располагаем по правому краю */
+    top: 60px; /* Устанавливаем вертикальное расположение */
+    text-align: center;
+    border-radius: 8px;
+  
+  }
+  .wingrid{
+    display: grid;
+    justify-content: center;
+    width: 100%;
+  }
+  .winbutt{
+    border: 0px;
+    background-color: transparent;
+    color: rgb(17, 17, 27);
+    margin-top: 20px;
+    padding: 15px 10px;
+    width: 260px;
+  }
+  .bementorwin{
+    padding: 15px 10px;
+  }
+  .bementorwin:hover{
+    background-color: var(--fon, #F7F8FC);
+    transition: 0.9s;
+  }
+  /* var(--fon, #F7F8FC) */
+  .editwinb{
+    margin-left: 10px;
+  }
+  .winicon{
+    font-size: 20px;
+  }
+  .winbutt:hover{
+    background-color: var(--fon, #F7F8FC);
+    transition: 0.9s;
+  }
+  /* Стиль для кнопки закрытия окна */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 25px;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.9s;
+  }
+  .wintext{
+    margin-bottom: 10px;
+
+  }
+  .winusername{
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .winpersonemail{
+    font-size: 12px;
+    margin-top: 5px;
+  }
+.winpersonname{
+    border: 0;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    color: #25292d;
+}
+.skillver {
+    background: linear-gradient(180deg, rgb(69.04, 119.82, 218.01) 0%, rgb(120.09, 47.69, 164.46) 100%);
+    -webkit-background-clip: text !important;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Mulish-Regular", Helvetica;
+    font-weight: 800;
+    color: transparent;
+    letter-spacing: 1.634px;
+    font-size: 28px;
+    text-align: center;
+    margin: 2% 0;
+}
+
+
+.menuleft {
+    position: fixed;
+    height: 100%;
+    background-color: var(--W, #ffffff);
+    font-size: 20.9px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto;
+    margin-top: 2.9%;
+}
+.imitator{
+   width: 100%;
+}
+
+.categories {
+    
+    margin-top: 17%;
+    display: grid;
+    padding-bottom: 90px;
+    grid-template-columns: auto;
+    height: 335px;
+
+}
+.line{
+    border-bottom: 1px solid black;
+    height: 100%;
+    margin: 0;
+}
+.categswich {
+    padding: 16px 40px;
+    cursor: pointer;
+    border-right: 14px solid #d5dce600;
+}
+.categswich:hover{
+    padding: 16px 40px;
+    background-color: rgba(247, 248, 252, 1);
+    cursor: pointer;
+    transition: 0.6s;
+    border-right: 14px solid #00295a32;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.categswich_active{
+    padding: 16px 40px;
+    background-color: rgba(247, 248, 252, 1);
+    cursor: pointer;
+    border-right: 14px solid #00285A;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.categswichout{
+    padding: 16px 40px;
+}
+a {
+    margin-left: 7px;
+    font-family: "Mulish-Regular", Helvetica;
+}
+
+.prime_block{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.header{
+    position: fixed;
+    display: flex;
+    padding: 0.5% 2.5%;
+    justify-content: space-between;
+    width: 95%;
+    background-color: #ffffff;
+}
+.imtr{
+    width: 95%;
+    height: 7%;
+}
+.prime_body{
+    padding: 10px 40px;
+    width:78%;
+    margin-top: 65px;
+    margin-left: 262px;
+    position: fixed;
+    overflow: auto;
+ 
+}
+.prime_body::-webkit-scrollbar {
+    display: none; /* для Chrome, Safari и Edge */
+  }
+@media (width<1687px) and (width>1536px) {
+    .prime_body{
+        height: 84%;
+    }
+}
+@media (width<1921px) and (width>1687px) {
+    .prime_body{
+        height: 87%;
+        width:79.5%;
+        padding: 1% 3%;
+        margin-left: 250px;
+    }
+}
+@media (width<=1536px) {
+    .prime_body{
+        height: 85%;
+    }
+}
+.userphoto{
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+    object-fit: cover;
+
+}
+.headertext{
+    margin: auto 0;
+    font-family: "Mulish-Regular", Helvetica;
+    font-size: 20px;
+    width: 500px;
+}
+.fl{
+    display: flex;
+}
+.headertext2{
+    display: flex;
+    gap:30px;
+}
+.headertext3{
+    display: flex;
+    gap:10%;
+}
+.cent{
+    margin:auto;
+}
+
+.timehead{
+    width: 70px;
+    padding: 5px 5px;
+    background-color: rgba(246, 248, 250, 1);
+    text-align: center;
+    border-radius: 8px;
+}
+
+.fioperson{
+    display: flex;
+    width: 450px;
+    gap: 25px;
+    margin: 20px 0px;
+    
+}
+.txtperson{
+    font-weight: 900px;
+    font-size: 20px;
+    margin: auto 0;
+}
+.button-cencel{
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 5px;
+    width: 130px;
+    height: 30px;
+    font-size: 16px;
+}
+.button-savedatas{
+    border: 0;
+    width: 130px;
+    height: 30px;
+    font-size: 16px;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgb(69.04, 119.82, 218.01) 0%, rgb(120.09, 47.69, 164.46) 100%);
+}
+.txtinp{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.datasperson{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.inpdatasperson1{
+    width: 18px;
+    height: 30px;
+    margin-top: 3px;
+    margin-left: -22px;
+    border: 0;
+    background-color: transparent;
+    border-radius: 5px;
+    border-color: #858585;
+    outline: none;
+}
+.label_input22{
+    font-size: 16px;
+    color: #242424;
+    margin-bottom: 8px;
+
+  }
+  .inp22{
+    border: 0.3px solid #b1b1b1;
+    padding: 2% 3%;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+  }
+  .inptConttee222{
+    display: grid;
+    margin-bottom: 10px;
+  }
+  .inptConttee22{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 3% auto;
+    grid-gap: 6%;
+    
+  }
+.buttonsperson{
+    display: flex;
+    gap: 30px;
+    justify-content: end;
+    margin-right: 78px;
+    margin-top: 10px;
+}
+.win{
+    justify-content: center;
+}
+
+.modal2{
+  display: none; /* Скрыто по умолчанию */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: #000000b7;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-content2 {
+  background-color: var(--fon, #ffffff);
+margin: 9% auto;
+border: 1px solid #888;
+width: 400px;
+height: 450px;
+border-radius: 8px;
+box-shadow: 0px 3px 12px 0px rgba(156, 156, 156, 0.361);
+
+}
+.inp{
+  border: 0.3px solid #b1b1b1;
+  padding: 3% 3%;
+  border-radius: 8px;
+  outline: none;
+}
+.label_input{
+  font-size: 13px;
+  color: #242424;
+  margin-bottom: 3px;
+}
+.inptConttee2{
+  display: grid;
+  grid-template-columns: 100%;
+}
+.inptConttee{
+  display: grid;
+  margin-top: 10%;
+  grid-gap: 6%;
+  
+}
+.zapis_label{
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-align: center;
+
+
+}
+.zapis_label1{
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0px;
+}
+.conttee{
+  padding: 10% 10%;
+  
+}
+.close2 {
+  color: #aaa;
+  float: right;
+  font-size: 25px;
+  margin-right: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.directbutton{
+  border: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 10px;
+  letter-spacing: 1px;
+  position: relative;
+  border-radius: 10px;
+  color: #ffffff;
+  background: linear-gradient(180deg, rgb(69.04, 119.82, 218.01) 0%, rgb(120.09, 47.69, 164.46) 100%);
+}
